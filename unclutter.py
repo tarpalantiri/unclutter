@@ -28,3 +28,5 @@ if __name__ == '__main__':
         print(f"+-{lib.get_name_from_path(folder)}")
         for file in files:
             print(f'|----{lib.get_name_from_path(file)}')
+
+    lib.prompt("Done!")
