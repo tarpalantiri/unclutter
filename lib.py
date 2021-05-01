@@ -4,6 +4,7 @@ from json import load
 
 # Constants and settings load------------------------------------------------------------
 SETTINGS_FILE_NOT_FOUND = "You need settings.json in the script directory..."
+SETTINGS_FILE_IO_ERROR = "Cannot read settings file"
 
 def prompt(msg=''):
     print(msg)
@@ -14,17 +15,19 @@ try:
     settings = load(open('settings.json'))
 except FileNotFoundError:
     prompt(SETTINGS_FILE_NOT_FOUND)
+except IOError:
+    prompt(SETTINGS_FILE_IO_ERROR)
 
-DIR_ENTRY_OBJECTS_COLLECTION_ERROR = settings['errors']['DIR_ENTRY_CREATION_ERROR']
-FOLDERS_CREATION_ERROR = settings['errors']['FOLDER_CREATION_ERROR']
-NO_WORK_FILES_TO_COPY_MESSAGE = settings['messages']['NO_FILES_TO_COPY_MESSAGE']
-FILE_MOVE_ERROR = settings["errors"]["FILE_MOVE_ERROR"]
+DIR_ENTRY_OBJECTS_COLLECTION_ERROR = settings['errorMessages']['DIR_ENTRY_CREATION_ERROR']
+FOLDERS_CREATION_ERROR = settings['errorMessages']['FOLDER_CREATION_ERROR']
+NO_WORK_FILES_TO_COPY_MESSAGE = settings['casualPrompts']['NO_FILES_TO_COPY_MESSAGE']
+FILE_MOVE_ERROR = settings["errorMessages"]["FILE_MOVE_ERROR"]
 
-isTestRun = settings['test_run']
+isTestRun = settings["programSettings"]['testRun']
 if isTestRun:
-    WORKSPACE_PATH = settings['test_dir_path']
+    WORKSPACE_PATH = settings["programSettings"]['testDirPath']
 else:
-    WORKSPACE_PATH = settings['workspace_path']
+    WORKSPACE_PATH = settings["programSettings"]['workspacePath']
 #----------------------------------------------------------------------------------------
 
 def get_name_from_path(path_str):
