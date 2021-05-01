@@ -7,4 +7,4 @@ Personal program to unclutter my desktop after researching an assignment.
  - [ ] Change program to a continous loop
 	 - [ ] Caching of created folders
 	 - [ ] temporary object creation
-- [ ] Migrate from terminal to GUI with tkinter
+ - [ ] Migrate from terminal to GUI with tkinter
