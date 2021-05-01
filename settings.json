@@ -1,13 +1,15 @@
 {
-    "workspace_path" : "C:\\Users\\tehse\\Desktop",
-    "test_dir_path" : "C:\\Users\\tehse\\Desktop\\Unclutter_Me_Timbers\\testdir",
-    "test_run" : false,
-    "errors" : {
+    "programSettings" : {
+        "workspacePath" : "C:\\Users\\tehse\\Desktop",
+        "testDirPath" : "C:\\Users\\tehse\\Desktop\\Unclutter_Me_Timbers\\testdir",
+        "testRun" : false
+    },
+    "errorMessages" : {
         "DIR_ENTRY_CREATION_ERROR" : "Error encountered during DIR_ENTRY objects list creation",
         "FOLDER_CREATION_ERROR" : "Error encountered during creation of folders, maybe run as administrator",
         "FILE_MOVE_ERROR" : "Cannot move files, maybe a permission issue."
     },
-    "messages" : {
+    "casualPrompts" : {
         "NO_FILES_TO_COPY_MESSAGE" : "There are no files to copy"
     }
 }
