@@ -23,5 +23,3 @@ Settings description:
  - [X] Option to add Date/Time to the folder name
  - [ ] Change program to a continous loop
  - [ ] Migrate from terminal to GUI with tkinter
-
- ############ Author: Tehseen Sajjad
