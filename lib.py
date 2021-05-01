@@ -3,7 +3,6 @@ from shutil import move
 from json import load
 from datetime import datetime
 
-# Constants and settings load------------------------------------------------------------
 SETTINGS_FILE_NOT_FOUND = "You need settings.json in the script directory..."
 SETTINGS_FILE_IO_ERROR = "Cannot read settings file"
 
@@ -32,7 +31,7 @@ if isTestRun:
     WORKSPACE_PATH = settings["programSettings"]['testDirPath']
 else:
     WORKSPACE_PATH = settings["programSettings"]['workspacePath']
-#----------------------------------------------------------------------------------------
+
 
 def get_name_from_path(path_str):
     return path_str.split('\\')[-1]
