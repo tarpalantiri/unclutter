@@ -1,4 +1,4 @@
-## Unclutter
+## Info
 Personal program to unclutter my desktop after researching an assignment.
 
 ## Usage
