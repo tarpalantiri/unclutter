@@ -41,8 +41,7 @@ def get_folder_name(file_name):
     folder_name_string = "{date} - {name}"
     folder_name = file_name.split('-')[FOLDER_NAME_DETERMINER].upper()
     if ADD_DATETIME:
-        return folder_name_string.format(
-            date=TODAY, name=folder_name)
+        return folder_name_string.format(date=TODAY, name=folder_name)
     else:
         return folder_name
 
