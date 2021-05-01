@@ -50,7 +50,11 @@ class FileHandler:
         self.dir_entries = None
         with os.scandir(WORKSPACE_PATH) as dirObj:
             try:
-                self.dir_entries = [file_entry for file_entry in dirObj if file_entry.is_file() and '-' in file_entry.name] # Find out why generators dont work here
+                self.dir_entries = [
+                    file_entry for file_entry in dirObj \
+                    if file_entry.is_file() and \
+                    '-' in file_entry.name
+                    ] # Find out why generators dont work here
             except:
                 prompt(DIR_ENTRY_OBJECTS_COLLECTION_ERROR)
         
