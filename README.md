@@ -13,7 +13,7 @@ Settings description:
 |`workspacePath`|Tells the program where to look for its work|Windows Path string|
 | `testDirPath` | A test folder for testing the execution of the program in a safe environment |Windows Path string|
 |`testRun`|Tells the program weather to run in test folder or workspace folder | Boolean **true** / **false** |
-|`folderNameDeterminer`|Folder name accessor. Determines the position of the name of the folder in the name of the files being worked on. *example* in this-is-a-name.pdf has this:1, is:2 ...| Integer |
+|`folderNameDeterminer`|Folder name accessor. Determines the position of the name of the folder in the name of the files being worked on. *example* in `this-is-a-name.pdf` has `this:1, is:2` ...| Integer |
 |`addDateTime`| Determines weather to add date-time info to the folder names| Boolean **true** / **false** |
 |`dateTimeFormat`|Python date-time format string. Formatting for the date time. https://www.w3schools.com/python/python_datetime.asp | Python Datetime Format String |
 
