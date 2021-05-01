@@ -26,8 +26,8 @@ FOLDER_NAME_DETERMINER = settings["programSettings"]["folderNameDeterminer"] - 1
 DATETIME_FORMAT = settings["programSettings"]["dateTimeFormat"]
 ADD_DATETIME = settings["programSettings"]["addDateTime"]
 TODAY = datetime.now().strftime(DATETIME_FORMAT)
-isTestRun = settings["programSettings"]['testRun']
-if isTestRun:
+IS_TEST_RUN = settings["programSettings"]['testRun']
+if IS_TEST_RUN:
     WORKSPACE_PATH = settings["programSettings"]['testDirPath']
 else:
     WORKSPACE_PATH = settings["programSettings"]['workspacePath']
