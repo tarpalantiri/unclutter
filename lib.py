@@ -1,6 +1,7 @@
 import os
 from shutil import move
 from json import load
+from datetime import datetime
 
 # Constants and settings load------------------------------------------------------------
 SETTINGS_FILE_NOT_FOUND = "You need settings.json in the script directory..."
@@ -23,6 +24,9 @@ FOLDERS_CREATION_ERROR = settings['errorMessages']['FOLDER_CREATION_ERROR']
 NO_WORK_FILES_TO_COPY_MESSAGE = settings['casualPrompts']['NO_FILES_TO_COPY_MESSAGE']
 FILE_MOVE_ERROR = settings["errorMessages"]["FILE_MOVE_ERROR"]
 FOLDER_NAME_DETERMINER = settings["programSettings"]["folderNameDeterminer"] - 1
+DATETIME_FORMAT = settings["programSettings"]["dateTimeFormat"]
+ADD_DATETIME = settings["programSettings"]["addDateTime"]
+TODAY = datetime.now().strftime(DATETIME_FORMAT)
 isTestRun = settings["programSettings"]['testRun']
 if isTestRun:
     WORKSPACE_PATH = settings["programSettings"]['testDirPath']
@@ -32,6 +36,15 @@ else:
 
 def get_name_from_path(path_str):
     return path_str.split('\\')[-1]
+
+def get_folder_name(file_name):
+    folder_name_string = "{date} - {name}"
+    folder_name = file_name.split('-')[FOLDER_NAME_DETERMINER].upper()
+    if ADD_DATETIME:
+        return folder_name_string.format(
+            date=TODAY, name=folder_name)
+    else:
+        return folder_name
 
 class FileHandler:
     
@@ -48,9 +61,9 @@ class FileHandler:
     def get_paths(self):
         for fileObj in self.dir_entries:
             filename, extension = fileObj.name.split('.')
-            cat = filename.split('-')[FOLDER_NAME_DETERMINER].upper()
+            folder_name = get_folder_name(filename)
             
-            folderPath = os.path.join(WORKSPACE_PATH, cat)
+            folderPath = os.path.join(WORKSPACE_PATH, folder_name)
             filePath = os.path.join(WORKSPACE_PATH, fileObj.name)
             
             # Populate Dict{ FolderPath : [FilePaths] }

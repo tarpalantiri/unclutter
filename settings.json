@@ -4,7 +4,9 @@
         "workspacePath" : "C:\\Users\\tehse\\Desktop",
         "testDirPath" : "C:\\Users\\tehse\\Desktop\\Unclutter_Me_Timbers\\testdir",
         "testRun" : false,
-        "folderNameDeterminer" : 1
+        "folderNameDeterminer" : 2,
+        "addDateTime" : true,
+        "dateTimeFormat": "%a"
     },
     "errorMessages":
     {
