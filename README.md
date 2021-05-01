@@ -2,8 +2,8 @@
 Personal program to unclutter my desktop after researching an assignment.
 
 ## Usage
-The program determines if a file is to be organized by if it has the *dash* (-) character in the file name
-Running the script in a shell or double clicking it will start the execution
+The program determines if a file is to be organized, if it has the *dash* (-) character in the file name
+Running the script in a shell or double clicking it will start the execution.
 
 ## Settings
 The settings are located in `settings.json` file in the main directory.
