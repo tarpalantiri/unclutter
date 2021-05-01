@@ -2,7 +2,8 @@
     "programSettings" : {
         "workspacePath" : "C:\\Users\\tehse\\Desktop",
         "testDirPath" : "C:\\Users\\tehse\\Desktop\\Unclutter_Me_Timbers\\testdir",
-        "testRun" : false
+        "testRun" : false,
+        "folderNameDeterminer" : 1
     },
     "errorMessages" : {
         "DIR_ENTRY_CREATION_ERROR" : "Error encountered during DIR_ENTRY objects list creation",

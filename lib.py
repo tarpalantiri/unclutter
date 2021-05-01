@@ -22,7 +22,7 @@ DIR_ENTRY_OBJECTS_COLLECTION_ERROR = settings['errorMessages']['DIR_ENTRY_CREATI
 FOLDERS_CREATION_ERROR = settings['errorMessages']['FOLDER_CREATION_ERROR']
 NO_WORK_FILES_TO_COPY_MESSAGE = settings['casualPrompts']['NO_FILES_TO_COPY_MESSAGE']
 FILE_MOVE_ERROR = settings["errorMessages"]["FILE_MOVE_ERROR"]
-
+FOLDER_NAME_DETERMINER = settings["programSettings"]["folderNameDeterminer"] - 1
 isTestRun = settings["programSettings"]['testRun']
 if isTestRun:
     WORKSPACE_PATH = settings["programSettings"]['testDirPath']
@@ -48,12 +48,12 @@ class FileHandler:
     def get_paths(self):
         for fileObj in self.dir_entries:
             filename, extension = fileObj.name.split('.')
-            cat = filename.split('-')[1].upper()
+            cat = filename.split('-')[FOLDER_NAME_DETERMINER].upper()
             
             folderPath = os.path.join(WORKSPACE_PATH, cat)
             filePath = os.path.join(WORKSPACE_PATH, fileObj.name)
             
-            # Populate Dict{Folder-Path : [File-Paths]}
+            # Populate Dict{ FolderPath : [FilePaths] }
             if folderPath not in self.folderToFilesDict.keys():
                 self.folderToFilesDict[folderPath] = []
             self.folderToFilesDict[folderPath].append(filePath)          
