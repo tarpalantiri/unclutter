@@ -6,17 +6,21 @@ from datetime import datetime
 SETTINGS_FILE_NOT_FOUND = "You need settings.json in the script directory..."
 SETTINGS_FILE_IO_ERROR = "Cannot read settings file"
 
+
 def prompt(msg=''):
     print(msg)
     input("Press ENTER to exit ... ")
     exit()
 
+
+settings = None
 try:
     settings = load(open('settings.json'))
 except FileNotFoundError:
     prompt(SETTINGS_FILE_NOT_FOUND)
 except IOError:
     prompt(SETTINGS_FILE_IO_ERROR)
+
 
 DIR_ENTRY_OBJECTS_COLLECTION_ERROR = settings['errorMessages']['DIR_ENTRY_CREATION_ERROR']
 FOLDERS_CREATION_ERROR = settings['errorMessages']['FOLDER_CREATION_ERROR']
@@ -36,6 +40,7 @@ else:
 def get_name_from_path(path_str):
     return path_str.split('\\')[-1]
 
+
 def get_folder_name(file_name):
     folder_name_string = "{date} - {name}"
     folder_name = file_name.split('-')[FOLDER_NAME_DETERMINER].upper()
@@ -44,6 +49,8 @@ def get_folder_name(file_name):
     else:
         return folder_name
 
+
+# noinspection PyPep8Naming,PyBroadException,PyUnresolvedReferences
 class FileHandler:
     
     def __init__(self):
@@ -51,10 +58,10 @@ class FileHandler:
         with os.scandir(WORKSPACE_PATH) as dirObj:
             try:
                 self.dir_entries = [
-                    file_entry for file_entry in dirObj \
-                    if file_entry.is_file() and \
+                    file_entry for file_entry in dirObj
+                    if file_entry.is_file() and
                     '-' in file_entry.name
-                    ] # Find out why generators dont work here
+                    ]  # Find out why generators don't work here
             except:
                 prompt(DIR_ENTRY_OBJECTS_COLLECTION_ERROR)
         
@@ -77,7 +84,8 @@ class FileHandler:
             return None
         return self.folderToFilesDict
 
-    def make_folder(self, path_dict={}):
+    @staticmethod
+    def make_folder(path_dict):
         try:
             for path in path_dict.keys():
                 if not os.path.exists(path):
@@ -85,7 +93,8 @@ class FileHandler:
         except:
             prompt(FOLDERS_CREATION_ERROR)
     
-    def move_files(self, path_dict):
+    @staticmethod
+    def move_files(path_dict):
         try:
             for folder, filesList in path_dict.items():
                 for filePath in filesList:
