@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # [Author]
 # Tehseen Sajjad
 # [Summary]
@@ -17,7 +18,7 @@ if __name__ == '__main__':
     else:
         lib.prompt(lib.NO_WORK_FILES_TO_COPY_MESSAGE)
     Handle.move_files(file_paths_dict)
-    
+
     print("Moved Files: ")
     for folder, files in file_paths_dict.items():
         print(f"+-{lib.get_name_from_path(folder)}")
