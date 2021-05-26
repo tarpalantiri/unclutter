@@ -21,10 +21,11 @@ except FileNotFoundError:
 except IOError:
     prompt(SETTINGS_FILE_IO_ERROR)
 
-
-DIR_ENTRY_OBJECTS_COLLECTION_ERROR = settings['errorMessages']['DIR_ENTRY_CREATION_ERROR']
+DIR_ENTRY_OBJECTS_COLLECTION_ERROR = settings['errorMessages'][
+    'DIR_ENTRY_CREATION_ERROR']
 FOLDERS_CREATION_ERROR = settings['errorMessages']['FOLDER_CREATION_ERROR']
-NO_WORK_FILES_TO_COPY_MESSAGE = settings['casualPrompts']['NO_FILES_TO_COPY_MESSAGE']
+NO_WORK_FILES_TO_COPY_MESSAGE = settings['casualPrompts'][
+    'NO_FILES_TO_COPY_MESSAGE']
 FILE_MOVE_ERROR = settings["errorMessages"]["FILE_MOVE_ERROR"]
 FOLDER_NAME_DETERMINER = settings["programSettings"]["folderNameDeterminer"] - 1
 DATETIME_FORMAT = settings["programSettings"]["dateTimeFormat"]
@@ -52,33 +53,31 @@ def get_folder_name(file_name):
 
 # noinspection PyPep8Naming,PyBroadException,PyUnresolvedReferences
 class FileHandler:
-    
     def __init__(self):
         self.dir_entries = None
         with os.scandir(WORKSPACE_PATH) as dirObj:
             try:
                 self.dir_entries = [
                     file_entry for file_entry in dirObj
-                    if file_entry.is_file() and
-                    '-' in file_entry.name
-                    ]  # Find out why generators don't work here
+                    if file_entry.is_file() and '-' in file_entry.name
+                ]  # Find out why generators don't work here
             except:
                 prompt(DIR_ENTRY_OBJECTS_COLLECTION_ERROR)
-        
-        self.folderToFilesDict = {} 
-    
-    def get_paths(self):
+
+        self.folderToFilesDict = {}
+
+    def get_paths(self) -> dict | None:
         for fileObj in self.dir_entries:
             filename, extension = fileObj.name.split('.')
             folder_name = get_folder_name(filename)
-            
+
             folderPath = os.path.join(WORKSPACE_PATH, folder_name)
             filePath = os.path.join(WORKSPACE_PATH, fileObj.name)
-            
+
             # Populate Dict{ FolderPath : [FilePaths] }
             if folderPath not in self.folderToFilesDict.keys():
                 self.folderToFilesDict[folderPath] = []
-            self.folderToFilesDict[folderPath].append(filePath)          
+            self.folderToFilesDict[folderPath].append(filePath)
 
         if self.folderToFilesDict and len(self.folderToFilesDict) < 1:
             return None
@@ -92,7 +91,7 @@ class FileHandler:
                     os.mkdir(path)
         except:
             prompt(FOLDERS_CREATION_ERROR)
-    
+
     @staticmethod
     def move_files(path_dict):
         try:
