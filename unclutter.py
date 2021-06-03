@@ -1,11 +1,13 @@
 # [Author]
 # Tehseen Sajjad
 # [Summary]
-# A small personal script that unclutters my desktop when working on an assignment or lab project.
+# A small personal script that unclutters my desktop when working on an
+# assignment or lab project.
 # [Usage/Requirements]
 # * Python > 3.5.x
 # * files need to have '-' characters in their name.
-# * The second word after the first '-' will be the folder to which the files will be moved.
+# * The second word after the first '-' will be the folder to which the files
+#   will be moved.
 # * Names of the folders are changed to title cases.
 import lib
 
