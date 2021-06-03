@@ -2,6 +2,7 @@ import os
 from shutil import move
 from json import load
 from datetime import datetime
+from typing import Union
 
 SETTINGS_FILE_NOT_FOUND = "You need settings.json in the script directory..."
 SETTINGS_FILE_IO_ERROR = "Cannot read settings file"
@@ -66,7 +67,7 @@ class FileHandler:
 
         self.folderToFilesDict = {}
 
-    def get_paths(self) -> dict | None:
+    def get_paths(self) -> Union[dict, None]:
         for fileObj in self.dir_entries:
             filename, extension = fileObj.name.split('.')
             folder_name = get_folder_name(filename)
